@@ -8,11 +8,12 @@ public abstract class State : MonoBehaviour
 
     // Check when the state started and how long it has been running.
     protected float startTime;
-    public float time => Time.time - startTime;
+    public float time => Time.time - startTime; // it's the current state running time.
 
     // Variables common to all states
-    protected Rigidbody2D body;
+    protected Rigidbody body;
     protected Animator animator;
+    protected bool grounded;
     protected PlayerController controller;   // Can pass on all the information possessed by the PlayerController instance.
 
     public virtual void Enter() { }
@@ -20,7 +21,7 @@ public abstract class State : MonoBehaviour
     public virtual void FixedDo() { }
     public virtual void Exit() { }
 
-    public void Init(Rigidbody2D _body, Animator _animator, PlayerController _controller)
+    public void Init(Rigidbody _body, Animator _animator, PlayerController _controller)
     {
         body = _body;
         animator = _animator;
